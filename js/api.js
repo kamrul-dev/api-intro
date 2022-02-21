@@ -24,3 +24,20 @@ function displayUsers(data) {
         ul.appendChild(li);
     }
 }
+
+
+// laod users and display on the website
+function loadNewUsers() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res => res.json())
+        .then(users => newLoadUsers(users));
+}
+
+function newLoadUsers(users) {
+    const ul = document.getElementById('newUsers');
+    for (const user of users) {
+        const li = document.createElement('li');
+        li.innerText = `User Name: ${user.name}   User Email: ${user.email}`;
+        ul.appendChild(li);
+    }
+}
